@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</helmet>
+
+<div>
+<header style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:16px clamp(20px,4vw,56px);backdrop-filter:blur(16px);background:linear-gradient(180deg,rgba(10,25,47,.94),rgba(10,25,47,.88));border-bottom:1px solid rgba(212,175,55,.18)">
+  <a href="77 Attackers Home.dc.html" style="display:flex;align-items:center;gap:12px;color:#F4F6F9">
+    <span style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;background:#D4AF37;color:#0A192F;font-family:'Anton',sans-serif;font-size:15px;letter-spacing:.5px;border-radius:4px">77</span>
+    <span style="font-family:'Anton',sans-serif;font-size:19px;letter-spacing:1.5px;line-height:1">ATTACKERS</span>
+  </a>
+  <div style="display:flex;align-items:center;gap:12px">
+    <a href="https://wa.me/35699447444" target="_blank" rel="noopener" style="display:none;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:12.5px;color:#F4F6F9;padding:9px 14px;border:1px solid rgba(244,246,249,.25);border-radius:100px" class="js-wa">
+      <span style="width:7px;height:7px;border-radius:50%;background:#12b76a;box-shadow:0 0 8px #12b76a"></span>+356 9944 7444
+    </a>
+    <button onMouseEnter="{{ openMenu }}" onClick="{{ toggleMenu }}" style="display:flex;align-items:center;gap:10px;background:#D4AF37;color:#0A192F;border:none;cursor:pointer;font-family:'Space Mono',monospace;font-weight:700;font-size:12.5px;letter-spacing:1px;text-transform:uppercase;padding:11px 18px;border-radius:100px">
+      Index
+      <span style="display:inline-flex;flex-direction:column;gap:3px">
+        <span style="width:15px;height:2px;background:#0A192F;display:block"></span>
+        <span style="width:15px;height:2px;background:#0A192F;display:block"></span>
+        <span style="width:15px;height:2px;background:#0A192F;display:block"></span>
+      </span>
+    </button>
+  </div>
+</header>
+
+<nav onMouseLeave="{{ closeMenu }}" style="{{ overlayStyle }}">
+  <div style="max-width:1200px;margin:0 auto;padding:76px clamp(20px,5vw,72px) 36px;min-height:100vh;display:flex;flex-direction:column">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:clamp(24px,4vw,52px)">
+      <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:2px;color:#64748b;text-transform:uppercase">Site Index — 77 Attackers</span>
+      <button onClick="{{ closeMenu }}" style="background:none;border:1px solid rgba(10,25,47,.2);color:#0A192F;cursor:pointer;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;padding:9px 16px;border-radius:100px;text-transform:uppercase">Close ✕</button>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:0;border-top:1px solid rgba(10,25,47,.1)">
+      <sc-for list="{{ indexLinks }}" as="link" hint-placeholder-count="12">
+        <a href="{{ link.href }}" target="{{ link.target }}" style="display:flex;align-items:baseline;gap:16px;padding:16px 8px;border-bottom:1px solid rgba(10,25,47,.1);color:#0A192F;transition:background .1s,padding .1s" style-hover="background:#D4AF37;color:#0A192F;padding-left:16px" style-active="background:#9C7A1E;color:#fff">
+          <span style="font-family:'Space Mono',monospace;font-size:12px;color:#0A192F;min-width:26px">{{ link.num }}</span>
+          <span style="font-family:'Anton',sans-serif;font-size:clamp(20px,2.4vw,27px);letter-spacing:.5px;line-height:1.05">{{ link.label }}</span>
+          <span style="margin-left:auto;font-size:15px">{{ link.arrow }}</span>
+        </a>
+      </sc-for>
+    </div>
+    <div style="margin-top:auto;padding-top:36px;display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;align-items:center">
+      <a href="https://wa.me/35699447444" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:13px;color:#0A192F">WhatsApp · +356 9944 7444</a>
+      <div style="display:flex;gap:20px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;text-transform:uppercase">
+        <a href="#" style="color:#64748b">Facebook</a><a href="#" style="color:#64748b">LinkedIn</a><a href="#" style="color:#64748b">YouTube</a><a href="#" style="color:#64748b">X</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<button onClick="{{ toggleChat }}" style="{{ fabStyle }}">
+  <span style="{{ fabIconOpen }}">💬</span>
+  <span style="{{ fabIconClose }}">✕</span>
+</button>
+
+<div style="{{ chatStyle }}">
+  <div style="display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid rgba(10,25,47,.08);background:#fff">
+    <span style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:#0A192F;color:#D4AF37;font-family:'Anton',sans-serif;font-size:14px;border-radius:50%">77<span style="position:absolute;bottom:-1px;right:-1px;width:10px;height:10px;border-radius:50%;background:#12b76a;border:2px solid #fff"></span></span>
+    <div style="flex:1">
+      <div style="font-family:'Archivo',sans-serif;font-weight:600;font-size:14.5px;line-height:1.1;color:#0A192F">77 Attackers Assistant</div>
+      <div style="font-family:'Space Mono',monospace;font-size:10.5px;color:#12b76a;letter-spacing:.5px;margin-top:2px">● Online — replies instantly</div>
+    </div>
+    <button onClick="{{ toggleChat }}" style="background:none;border:none;color:#64748b;cursor:pointer;font-size:16px">✕</button>
+  </div>
+  <div style="flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;background:#F4F6F9">
+    <sc-for list="{{ messages }}" as="msg" hint-placeholder-count="2">
+      <div style="{{ msg.wrap }}">
+        <div style="{{ msg.bubble }}">{{ msg.text }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="padding:12px 14px;border-top:1px solid rgba(10,25,47,.08);background:#fff">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+      <sc-for list="{{ quickReplies }}" as="q" hint-placeholder-count="3">
+        <button onClick="{{ q.onClick }}" style="background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.45);color:#0A192F;cursor:pointer;font-family:'Space Mono',monospace;font-size:11.5px;padding:7px 12px;border-radius:100px;transition:background .2s" style-hover="background:rgba(212,175,55,.28)">{{ q.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;background:#F4F6F9;border:1px solid rgba(10,25,47,.14);border-radius:100px;padding:6px 6px 6px 16px">
+      <input value="{{ input }}" onChange="{{ onInput }}" onKeyDown="{{ onKey }}" placeholder="Type a message…" style="flex:1;background:none;border:none;outline:none;color:#1E293B;font-family:'Archivo',sans-serif;font-size:14px" />
+      <button onClick="{{ send }}" style="background:#D4AF37;border:none;color:#0A192F;cursor:pointer;width:36px;height:36px;border-radius:50%;font-size:16px;display:flex;align-items:center;justify-content:center;flex:none">➤</button>
+    </div>
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { menuOpen: false, chatOpen: false, input: "", messages: [
+    { from: "bot", text: "Hi — I'm the 77 Attackers assistant. Whether you're a club, an attacker or an investor, I can point you the right way. What are you here for?" }
+  ] };
+
+  botReply(text) {
+    const t = text.toLowerCase();
+    let reply = "Thanks — the best next step is a quick WhatsApp chat with Dr Carl Peralta on +356 9944 7444. What would you like to explore in the meantime?";
+    if ((t.includes("club") && t.includes("sale")) || t.includes("buy") || t.includes("invest")) reply = "We hold signed mandates from clubs worldwide that are for sale or seeking investment — with valuations, fair sale structures and thorough due diligence.";
+    else if (t.includes("loan")) reply = "We arrange football loans up to €500,000,000 (4–6.5% p.a., terms up to 10 years), provided receivables originate from European clubs.";
+    else if (t.includes("attacker") || t.includes("player") || t.includes("scout")) reply = "We concentrate on a few but capable attackers and coaching staff, and match them to the right clubs.";
+    else if (t.includes("sponsor") || t.includes("advert") || t.includes("jersey") || t.includes("auction")) reply = "Right now there's a Front Of Jersey Space opportunity with a club in Brazil, sold via our no-reserve 77 Auctions.";
+    else if (t.includes("peralta") || t.includes("talk") || t.includes("contact") || t.includes("whatsapp")) reply = "You can reach Dr Carl Peralta directly on WhatsApp: +356 9944 7444.";
+    else if (t.includes("franchise")) reply = "77 Attackers franchises give you a pool of mandated players, club requests, brokerage rights, IP and a ready website + social presence.";
+    return reply;
+  }
+  pushPair(userText) {
+    this.setState(s => ({ messages: [...s.messages, { from: "user", text: userText }], input: "" }));
+    setTimeout(() => { this.setState(s => ({ messages: [...s.messages, { from: "bot", text: this.botReply(userText) }] })); }, 550);
+  }
+
+  renderVals() {
+    const messages = this.state.messages.map(m => ({
+      text: m.text,
+      wrap: `display:flex;justify-content:${m.from === "user" ? "flex-end" : "flex-start"}`,
+      bubble: m.from === "user"
+        ? "max-width:80%;background:#D4AF37;color:#0A192F;font-size:13.5px;line-height:1.5;padding:10px 14px;border-radius:16px 16px 4px 16px"
+        : "max-width:82%;background:#fff;color:#1E293B;font-size:13.5px;line-height:1.5;padding:10px 14px;border-radius:16px 16px 16px 4px;border:1px solid rgba(10,25,47,.08)"
+    }));
+    const quickReplies = ["Clubs for sale", "Football loans", "Talk to Dr Peralta"].map(label => ({ label, onClick: () => this.pushPair(label) }));
+    const chatBase = "position:fixed;z-index:70;bottom:96px;right:24px;width:min(380px,calc(100vw - 32px));height:min(560px,calc(100vh - 130px));background:#fff;border:1px solid rgba(10,25,47,.12);border-radius:18px;box-shadow:0 24px 70px rgba(10,25,47,.28);display:flex;flex-direction:column;overflow:hidden;transition:opacity .25s,transform .25s;transform-origin:bottom right";
+    return {
+      overlayStyle: `position:fixed;inset:0;z-index:80;background:rgba(244,246,249,.62);backdrop-filter:blur(18px);transition:opacity .35s,transform .45s cubic-bezier(.2,.8,.2,1);${this.state.menuOpen ? "opacity:1;transform:translateY(0);pointer-events:auto" : "opacity:0;transform:translateY(-24px);pointer-events:none"}`,
+      fabStyle: `position:fixed;z-index:71;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:#D4AF37;color:#0A192F;border:none;cursor:pointer;font-size:24px;box-shadow:0 12px 34px rgba(212,175,55,.45);display:flex;align-items:center;justify-content:center;transition:transform .2s`,
+      fabIconOpen: this.state.chatOpen ? "display:none" : "display:block",
+      fabIconClose: this.state.chatOpen ? "display:block;font-size:20px" : "display:none",
+      chatStyle: this.state.chatOpen ? `${chatBase};opacity:1;transform:scale(1);pointer-events:auto` : `${chatBase};opacity:0;transform:scale(.9);pointer-events:none`,
+      messages, quickReplies,
+      input: this.state.input,
+      onInput: (e) => this.setState({ input: e.target.value }),
+      onKey: (e) => { if (e.key === "Enter") this.send(); },
+      send: () => { const v = this.state.input.trim(); if (v) this.pushPair(v); },
+      toggleChat: () => this.setState(s => ({ chatOpen: !s.chatOpen })),
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      openMenu: () => this.setState({ menuOpen: true }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      indexLinks: [
+        { num: "01", label: "About", href: "77 Attackers - Company and Services.dc.html", target: "_self", arrow: "→" },
+        { num: "02", label: "The 77 Network", href: "77 Attackers - The 77 Network.dc.html", target: "_self", arrow: "→" },
+        { num: "03", label: "Company & Services", href: "77 Attackers - Company and Services.dc.html", target: "_self", arrow: "→" },
+        { num: "04", label: "Football Clubs for Sale", href: "77 Attackers - Football Clubs for Sale.dc.html", target: "_self", arrow: "→" },
+        { num: "05", label: "Football Loans", href: "77 Attackers - Football Loans.dc.html", target: "_self", arrow: "→" },
+        { num: "06", label: "Advertising in Football", href: "77 Attackers - Advertising in Football.dc.html", target: "_self", arrow: "→" },
+        { num: "07", label: "The 77 Auctions", href: "77 Attackers - The 77 Auctions.dc.html", target: "_self", arrow: "→" },
+        { num: "08", label: "Referral Brokers, Scouts & Intermediaries", href: "77 Attackers - Referral Brokers.dc.html", target: "_self", arrow: "→" },
+        { num: "09", label: "Franchise Opportunity", href: "77 Attackers - Franchise Opportunity.dc.html", target: "_self", arrow: "→" },
+        { num: "10", label: "Investors", href: "77 Attackers - Investors.dc.html", target: "_self", arrow: "→" },
+        { num: "11", label: "The 77 Updates", href: "77 Attackers - The 77 Updates.dc.html", target: "_self", arrow: "→" },
+        { num: "12", label: "Portfolio ↗", href: "https://www.transfermarkt.com/77-attackers/beraterfirma/berater/5087/beraterfirma/berater/5087", target: "_blank", arrow: "↗" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

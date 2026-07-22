@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{background:#F4F6F9;color:#1E293B;font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#0A192F;text-decoration:none}a:hover{color:#9C7A1E}
+::selection{background:#D4AF37;color:#0A192F}
+.hl{display:block;overflow:hidden}
+</style>
+<script>(function(){function hide(){var l=document.querySelector('.js-loader');if(!l)return;l.style.opacity='0';l.style.pointerEvents='none';setTimeout(function(){l.style.display='none';},550);}if(document.readyState==='complete'){setTimeout(hide,350);}else{window.addEventListener('load',function(){setTimeout(hide,350);});}})();</script>
+</helmet>
+
+<div style="min-height:100vh">
+<div class="js-loader" style="position:fixed;inset:0;z-index:9999;background:#0A192F;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease"><div style="text-align:center"><div style="font-family:'Anton',sans-serif;font-size:64px;color:#D4AF37;letter-spacing:2px;line-height:1">77</div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:3px;color:rgba(244,246,249,.6);margin-top:6px;text-transform:uppercase">Attackers</div></div></div>
+<dc-import name="SiteHeader" hint-size="100%,64px"></dc-import>
+
+<main>
+<section style="position:relative;overflow:hidden;padding:170px clamp(20px,5vw,72px) 60px;background:#0A192F;color:#fff">
+  <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1600&q=80" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0" />
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,25,47,.78),rgba(10,25,47,.94));z-index:1"></div>
+  <div style="position:relative;z-index:2;max-width:900px;margin:0 auto;text-align:center">
+    <p style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#D4AF37;margin:0 0 18px">International coverage, local expertise.</p>
+    <h1 style="font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(32px,5.5vw,64px);line-height:1.05;letter-spacing:-.5px;margin:0;text-transform:uppercase">
+      <span class="hl"><span style="display:block">Investors</span></span>
+    </h1>
+  </div>
+</section>
+
+<section style="padding:clamp(56px,8vw,100px) clamp(20px,5vw,72px)">
+  <div class="rv" style="max-width:780px;margin:0 auto">
+    <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;color:#64748b;text-transform:uppercase">About our investment opportunities</span>
+    <p style="font-size:16px;line-height:1.75;color:#334155;margin:18px 0 0">77 Attackers enjoys signed mandates from various football clubs worldwide which are either for sale or which require business partners to invest in or sponsor their club.</p>
+    <p style="font-size:16px;line-height:1.75;color:#334155;margin:16px 0 0">Sponsorships in various forms such as naming rights of their stadium, front of jersey sponsorships, endorsements made by their players etc.</p>
+  </div>
+</section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() { import("./site-motion.js").then(m => m.initPageMotion()); }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

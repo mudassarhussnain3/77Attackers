@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{background:#F4F6F9;color:#1E293B;font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#0A192F;text-decoration:none}a:hover{color:#9C7A1E}
+::selection{background:#D4AF37;color:#0A192F}
+.hl{display:block;overflow:hidden}
+</style>
+<script>(function(){function hide(){var l=document.querySelector('.js-loader');if(!l)return;l.style.opacity='0';l.style.pointerEvents='none';setTimeout(function(){l.style.display='none';},550);}if(document.readyState==='complete'){setTimeout(hide,350);}else{window.addEventListener('load',function(){setTimeout(hide,350);});}})();</script>
+</helmet>
+
+<div style="min-height:100vh">
+<div class="js-loader" style="position:fixed;inset:0;z-index:9999;background:#0A192F;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease"><div style="text-align:center"><div style="font-family:'Anton',sans-serif;font-size:64px;color:#D4AF37;letter-spacing:2px;line-height:1">77</div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:3px;color:rgba(244,246,249,.6);margin-top:6px;text-transform:uppercase">Attackers</div></div></div>
+<dc-import name="SiteHeader" hint-size="100%,64px"></dc-import>
+
+<main>
+<section style="position:relative;overflow:hidden;padding:170px clamp(20px,5vw,72px) 70px;background:#0A192F;color:#fff">
+  <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=1600&q=80" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0" />
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,25,47,.78),rgba(10,25,47,.94));z-index:1"></div>
+  <div style="position:relative;z-index:2;max-width:900px;margin:0 auto;text-align:center">
+    <p style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#D4AF37;margin:0 0 20px">International coverage, local expertise.</p>
+    <h1 style="font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(40px,7vw,86px);line-height:1;letter-spacing:-1px;margin:0;text-transform:uppercase">
+      <span class="hl"><span style="display:block">The 77 Network</span></span>
+    </h1>
+  </div>
+</section>
+
+<section style="padding:clamp(56px,8vw,100px) clamp(20px,5vw,72px)">
+  <div class="rv" style="max-width:800px;margin:0 auto;text-align:center">
+    <p style="font-size:clamp(17px,1.8vw,21px);line-height:1.7;color:#1E293B;margin:0">77 Attackers forms part of a network which is the first Global Independent Network of Football Agents. We believe that together we are stronger – by pooling our forces we can provide new and better opportunities for our players.</p>
+  </div>
+</section>
+
+<section style="padding:0 clamp(20px,5vw,72px) clamp(64px,9vw,110px)">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="rv" style="margin-bottom:32px">
+      <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:2px;color:#64748b;text-transform:uppercase">A 360º service</span>
+      <p style="font-size:15px;line-height:1.6;color:#475569;margin:12px 0 0;max-width:640px">The Group strives to provide a 360º service including:</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="8">
+        <div class="rv" style="background:#fff;border:1px solid rgba(10,25,47,.1);border-radius:8px;padding:22px">
+          <span style="font-family:'Space Mono',monospace;font-size:11px;color:#0A192F;opacity:.5">{{ s.num }}</span>
+          <p style="font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;line-height:1.4;margin:10px 0 0;color:#0A192F">{{ s.name }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() { import("./site-motion.js").then(m => m.initPageMotion()); }
+  renderVals() {
+    return { services: [
+      "Head office support","Legal advice","Accounting & tax advice","Financial advice",
+      "Commercial / sponsorship deals","Marketing / endorsements","Social media","Player insurance support systems"
+    ].map((name, i) => ({ name, num: String(i + 1).padStart(2, "0") })) };
+  }
+}
+</script>
+</body>
+</html>
